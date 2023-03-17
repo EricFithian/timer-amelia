@@ -7,8 +7,8 @@
 
 body {
     background-color: blue;
-    background: url(./images/MicrosoftTeams-image.png) no-repeat center center fixed; 
-    background-size: contain;
+    background: url(./images/nice-logo.png) no-repeat center center fixed; 
+    background-size: cover;
     height: 50vh;
 }
 
@@ -28,6 +28,8 @@ input {
 
 h2 {
     font-size: 4em;
+    color: white;
+    margin-top: 20px;
 }
 
 .buttons {
