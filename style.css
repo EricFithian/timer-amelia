@@ -36,7 +36,7 @@ h2 {
     align-items: center;
 }
 
-.start, .stop {
+.start, .stop, .clear {
     width: 12vw;
-    height: 6vh;
+    height: 5vh;
 }

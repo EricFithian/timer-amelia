@@ -7,6 +7,7 @@ const oneMinute = document.getElementById('oneMinute');
 const tenSeconds = document.getElementById('tenSeconds');
 const oneSecond = document.getElementById('oneSecond');
 const inputs = document.querySelectorAll('input');
+const clear = document.querySelector('.clear')
 let paused = false;
 
 function countdown() {
@@ -37,16 +38,25 @@ function countdown() {
     }
 }
 
-function populateinputs() {
+function populateInputs() {
     for(let i = 0; i < inputs.length; i++) {
         if(!inputs[i].value) inputs[i].value = 0;
     }
 }
 
+function resetInputs() {
+    for(let i = 0; i < inputs.length; i++) {
+        inputs[i].value = '';
+    }
+}
+
 startButton.addEventListener('click', () => {
-    populateinputs();
+    populateInputs();
     countdown();
 });
+
+clear.addEventListener('click', resetInputs);
+
 pauseButton.addEventListener('click', () => {
     console.log(pauseButton.innerHTML);
     paused = !paused;
