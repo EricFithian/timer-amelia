@@ -1,0 +1,42 @@
+.timer {
+    display: flex;
+    width: 100vw;
+    height: 50vh;
+    justify-content: space-between;
+}
+
+body {
+    background-color: blue;
+    background: url(./images/MicrosoftTeams-image.png) no-repeat center center fixed; 
+    background-size: contain;
+    height: 50vh;
+}
+
+h1 {
+    text-align: center;
+    font-size: 5em;
+    color: orange;
+    height: 25vh
+}
+
+input {
+    height: 15vh;
+    width: 14vw;
+    text-align: center;
+    font-size: 3em;
+}
+
+h2 {
+    font-size: 4em;
+}
+
+.buttons {
+    height: 15vh;
+    width: 14vw;
+    align-items: center;
+}
+
+.start, .stop {
+    width: 12vw;
+    height: 6vh;
+}
