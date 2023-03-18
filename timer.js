@@ -44,6 +44,7 @@ function resetInputs() {
 }
 
 startButton.addEventListener('click', () => {
+    if(interval) clearInterval(interval);
     paused = false;
     pauseButton.innerHTML = "Pause Timer!"
     populateInputs();
