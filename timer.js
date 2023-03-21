@@ -5,13 +5,21 @@ const oneMinute = document.getElementById('oneMinute');
 const tenSeconds = document.getElementById('tenSeconds');
 const oneSecond = document.getElementById('oneSecond');
 const inputs = document.querySelectorAll('input');
-const clear = document.querySelector('.clear')
+const clear = document.querySelector('.clear');
+let audio
 let paused = false;
 let interval;
 
 function countdown() {
     if(!paused) {
-        if(!parseInt(tenMinutes.value) && !parseInt(oneMinute.value) && !parseInt(tenSeconds.value) && !parseInt(oneSecond.value)) return;
+        if(!parseInt(tenMinutes.value) && !parseInt(oneMinute.value) && !parseInt(tenSeconds.value) && !parseInt(oneSecond.value)) {
+            audio.src = '';
+            audio.pause();
+        }
+        if(!parseInt(tenMinutes.value) && !parseInt(oneMinute.value) && parseInt(tenSeconds.value) === 2 && parseInt(oneSecond.value) === 0) {
+            audio = new Audio('audio/upbeat.mp3')
+            audio.play();
+        }
         if(parseInt(oneSecond.value)) {
             oneSecond.value = parseInt(oneSecond.value) - 1;
         } else if(parseInt(tenSeconds.value)) {
