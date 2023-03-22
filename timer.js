@@ -16,7 +16,7 @@ function countdown() {
             audio.src = '';
             audio.pause();
         }
-        if(!parseInt(tenMinutes.value) && !parseInt(oneMinute.value) && parseInt(tenSeconds.value) === 2 && parseInt(oneSecond.value) === 0) {
+        if(!parseInt(tenMinutes.value) && !parseInt(oneMinute.value) && parseInt(tenSeconds.value) === 2 && !parseInt(oneSecond.value)) {
             audio = new Audio('audio/upbeat.mp3')
             audio.play();
         }
@@ -46,6 +46,7 @@ function populateInputs() {
 
 function resetInputs() {
     clearInterval(interval);
+    if(audio) audio.pause();
     for(let i = 0; i < inputs.length; i++) {
         inputs[i].value = '';
     }
@@ -54,6 +55,7 @@ function resetInputs() {
 startButton.addEventListener('click', () => {
     if(interval) clearInterval(interval);
     paused = false;
+    audio ? audio.play() : null;
     pauseButton.innerHTML = "Pause Timer!"
     populateInputs();
     interval = setInterval(countdown, 1000);
@@ -61,8 +63,16 @@ startButton.addEventListener('click', () => {
 
 clear.addEventListener('click', resetInputs);
 
+function restartAudio() {
+    clearInterval(interval);
+    interval = '';
+}
+
 pauseButton.addEventListener('click', () => {
     console.log(pauseButton.innerHTML);
+    if(audio && !paused) audio.pause();
+    else if(audio) audio.play();
     paused = !paused;
+    interval ? restartAudio() : setInterval(countdown, 1000);
     pauseButton.innerHTML === "Pause Timer!" ? pauseButton.innerHTML = "Restart Timer!" : pauseButton.innerHTML = "Pause Timer!"
 })
