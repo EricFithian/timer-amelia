@@ -12,10 +12,6 @@ let interval;
 
 function countdown() {
     if(!paused) {
-        if(!parseInt(tenMinutes.value) && !parseInt(oneMinute.value) && !parseInt(tenSeconds.value) && !parseInt(oneSecond.value)) {
-            audio.src = '';
-            audio.pause();
-        }
         if(!parseInt(tenMinutes.value) && !parseInt(oneMinute.value) && parseInt(tenSeconds.value) === 2 && !parseInt(oneSecond.value)) {
             audio = new Audio('audio/upbeat.mp3')
             audio.play();
@@ -52,14 +48,16 @@ function resetInputs() {
     }
 }
 
-startButton.addEventListener('click', () => {
+function start() {
     if(interval) clearInterval(interval);
     paused = false;
     audio ? audio.play() : null;
     pauseButton.innerHTML = "Pause Timer!"
     populateInputs();
     interval = setInterval(countdown, 1000);
-});
+}
+
+startButton.addEventListener('click', start);
 
 clear.addEventListener('click', resetInputs);
 
@@ -67,6 +65,17 @@ function restartAudio() {
     clearInterval(interval);
     interval = '';
 }
+
+window.addEventListener("keydown", (e) => {
+    if(e.key === "Enter") start();
+    else if(e.target.type === "number" && parseInt(e.key) >= 0) {
+        console.log(e.key)
+        e.target.value = ''
+        e.target.setAttribute('value', e.key);
+        console.log(e.target.value)
+    }
+    
+})
 
 pauseButton.addEventListener('click', () => {
     console.log(pauseButton.innerHTML);
