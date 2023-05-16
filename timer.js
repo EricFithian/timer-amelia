@@ -12,7 +12,9 @@ let interval;
 
 function countdown() {
     if(!paused) {
-        if(!parseInt(tenMinutes.value) && !parseInt(oneMinute.value) && parseInt(tenSeconds.value) === 2 && !parseInt(oneSecond.value)) {
+        if(!parseInt(tenMinutes.value) && !parseInt(oneMinute.value) && !parseInt(tenSeconds.value) && !parseInt(oneSecond.value)) {
+            clearInterval(interval);
+        } else if(!parseInt(tenMinutes.value) && !parseInt(oneMinute.value) && parseInt(tenSeconds.value) === 2 && !parseInt(oneSecond.value)) {
             audio = new Audio('audio/upbeat.mp3')
             audio.play();
         }
@@ -51,7 +53,7 @@ function resetInputs() {
 function start() {
     if(interval) clearInterval(interval);
     paused = false;
-    audio ? audio.play() : null;
+    audio ? audio.pause() : null;
     pauseButton.innerHTML = "Pause Timer!"
     populateInputs();
     interval = setInterval(countdown, 1000);
