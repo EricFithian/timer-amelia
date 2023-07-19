@@ -12,7 +12,7 @@ body {
     height: 50vh;
 }
 
-h1 {
+h1, h2 {
     margin-top: 175px;
     text-align: center;
     font-size: 5em;
